@@ -13,7 +13,7 @@ import MainComponent from './components/MainComponent.vue';
     components: {
       HeaderComponent,
       MainComponent,
-    }
+    },
     data() {
       return {
         store
