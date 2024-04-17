@@ -2,7 +2,7 @@
     <div class="row">
         <h2>Film</h2>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3" v-for="card in store.movies" :key="card.id">
-            <CardComponent :id="card.id" :title="card.title" :original_title="card.original_title" :original_language="card.original_language" :vote_average="card.vote_average"/>
+            <CardComponent :id="card.id" :title="card.title" :original_title="card.original_title" :original_language="card.original_language" :vote_average="card.vote_average" :overview="card.overview"/>
         </div>
     </div>
 </template>

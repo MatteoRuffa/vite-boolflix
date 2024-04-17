@@ -2,7 +2,7 @@
     <div class="row">
         <h2>Serie TV</h2>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3" v-for="card in store.tvShows" :key="card.id">
-            <CardComponent :id="card.id" :title="card.name" :original_title="card.original_name" :original_language="card.original_language" :vote_average="card.vote_average"/>
+            <CardComponent :id="card.id" :title="card.name" :original_title="card.original_name" :original_language="card.original_language" :vote_average="card.vote_average" :overview="card.overview"/>
         </div>
     </div>
 </template>
