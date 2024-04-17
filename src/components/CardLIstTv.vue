@@ -1,12 +1,18 @@
 <template>
     <div>
-        CardListTv
+        
     </div>
 </template>
 
 <script>
+import { store } from '../store.js';
     export default {
         name: 'CardListTv',
+        data() {
+            return {
+                store
+            }
+        }
     }
 </script>
 

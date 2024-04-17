@@ -31,12 +31,12 @@ import MainComponent from './components/MainComponent.vue';
       searchShows() {
         this.store.options.params.query = this.searchQuery;
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
-          this.movies = res.data.results;
+          this.store.movies = res.data.results;
           console.log(res.data.results, this.movies);
         }),
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
-          this.tv = res.data.results;
-          console.log(res.data.results, this.tv);
+          this.tvShows = res.data.results;
+          //console.log(res.data.results, this.tv);
         })
       },
       onSubmit() {
@@ -44,7 +44,7 @@ import MainComponent from './components/MainComponent.vue';
       },
     },
     created() {
-      this.getDataShows()
+      //this.getDataShows()
     }
   }
 </script>

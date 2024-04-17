@@ -9,8 +9,11 @@ export const store = reactive ({
     options: {
         params: {
             api_key: 'e7eb5a3cedc202ea1ab6986f0348fa7d',
-            query: 'a',
+            query: '',
         }
     },
+    movies: [],
+    tvShows: [],
+    searchQuery: '',
     imageUrl: 'http://image.tmbd.org/t/p/original',
 })
