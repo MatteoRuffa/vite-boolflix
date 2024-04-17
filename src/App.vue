@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent />
+  <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" @submit="onSubmit"/>
   <MainComponent />
 </template>
 
@@ -20,20 +20,31 @@ import MainComponent from './components/MainComponent.vue';
       }
     },
     methods: {
-      getMovies() {
+      getDataShows() {
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
           console.log(res.data.results);
-        })
-      },
-      getTvSeries() {
+        }),
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
           console.log(res.data.results);
         })
-      }
+      },
+      searchShows() {
+        this.store.options.params.query = this.searchQuery;
+        axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
+          this.movies = res.data.results;
+          console.log(res.data.results, this.movies);
+        }),
+        axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
+          this.tv = res.data.results;
+          console.log(res.data.results, this.tv);
+        })
+      },
+      onSubmit() {
+        this.searchShows();
+      },
     },
     created() {
-      this.getMovies()
-      this.getTvSeries()
+      this.getDataShows()
     }
   }
 </script>
