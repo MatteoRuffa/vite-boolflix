@@ -2,7 +2,7 @@
     <main>
         <div class="container">
             <CardListMovies />
-            <CardListTv />
+            <CardListTvShows />
         </div>
     </main>
 </template>
@@ -10,12 +10,12 @@
 <script>
 import { store } from '../store.js';
 import CardListMovies from './CardListMovies.vue';
-import CardListTv from './CardLIstTv.vue';
+import CardListTvShows from './CardLIstTvShows.vue';
     export default {
         name: 'MainComponent',
         components: {
             CardListMovies,
-            CardListTv,
+            CardListTvShows,
         },
         data() {
             return {

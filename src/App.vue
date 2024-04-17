@@ -35,8 +35,8 @@ import MainComponent from './components/MainComponent.vue';
           console.log(res.data.results, this.movies);
         }),
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
-          this.tvShows = res.data.results;
-          //console.log(res.data.results, this.tv);
+          this.store.tvShows = res.data.results;
+          console.log(res.data.results, this.tv);
         })
       },
       onSubmit() {
