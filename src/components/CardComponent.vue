@@ -1,7 +1,10 @@
 <template>
     <div class="card-container">
         <div class="mr-card" :style="{ '--rotation': rotation }" @mouseover="hover = true" @mouseleave="hover = false">
-            <div class="side front"  v-if="!hover">
+            <div class="side front" v-if="!hover">
+                <img :src="store.imageUrl + poster_path" :alt="title">
+            </div>
+            <div class="side back" v-else >
                 <div>Titolo: {{ title }}</div>
                 <div>Titolo Originale: {{ original_title }}</div>
                 <div>Lingua: 
@@ -13,17 +16,15 @@
                         :alt="`${original_language}`">
                     <!-- <span v-else>{{ original_language }}</span> -->
                 </div>
-                <div>Voto: {{ vote_average }}</div>
+                <div>Voto:
+                    <div >
+                        <i v-for="n in getStars()" :key="n" class="fa-regular fa-star"></i></div>
+                    </div> 
                 <div class="trama">Trama: {{ overview }}</div>
             </div>
-            <div class="side back" v-else>
-                <img :src="store.imageUrl + poster_path" :alt="title">
-            </div>
-        </div>
             
-       
+        </div>
     </div>
-    
 </template>
 
 <script>
@@ -42,11 +43,16 @@ import { store } from '../store.js';
                 event.target.onerror = null;
                 event.target.outerHTML = this.original_language; 
             }, 
+            getStars() {
+                return Math.ceil(this.vote_average / 2);
+            }
+            
         },
         computed: {             //MI RESTITUISCE UNA STRINGA CHE RAPPRESENTA UN ANGOLO IN GRADI IN BASE ALLO STATO DI HOVER(SE HOVER: TRUE=> ROTATION SARA 180DEG, ALTRIMENTI ROTATION SARA 0DEG)
             rotation() {
                 return this.hover ? '180deg' : '0';
             },
+            
         }
     }
 </script>
@@ -69,13 +75,22 @@ import { store } from '../store.js';
             backface-visibility: hidden;
         }
         .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .back {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
             
             background-color: $bg-black;
-            padding: 10px;
+            padding: 18px;
             font-weight: 500;
             .trama {
                 overflow: auto;
@@ -94,19 +109,13 @@ import { store } from '../store.js';
                     width: 12px;
                 }
             }
-        }
-        .back {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            
-            transform: rotateY(180deg);
-            img {
                 width: 100%;
                 height: 100%;
-            }
+                backface-visibility: hidden;
+                transform: rotateY(180deg);
         }
+        
     }
 }
 
