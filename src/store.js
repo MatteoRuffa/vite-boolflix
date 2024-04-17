@@ -15,5 +15,5 @@ export const store = reactive ({
     movies: [],
     tvShows: [],
     searchQuery: '',
-    imageUrl: 'http://image.tmbd.org/t/p/original',
+    imageUrl: 'http://image.tmdb.org/t/p/w500',
 })

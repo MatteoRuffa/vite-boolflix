@@ -1,22 +1,31 @@
 <template>
-    <div>
-        <span>Titolo: {{ title }}</span><br>
-        <span>Titolo Originale: {{ original_title }}</span><br>
-        <span>Lingua: {{ original_language }}</span><br>
-        <span>Voto: {{ vote_average }}</span><br>
-        <span class="trama">Trama: {{ overview }}</span>
-        
+    <div class="card-container">
+        <div class="" >
+            <div class="mr-card">
+                <span>Titolo: {{ title }}</span><br>
+                <span>Titolo Originale: {{ original_title }}</span><br>
+                <span>Lingua: {{ original_language }}</span><br>
+                <span>Voto: {{ vote_average }}</span><br>
+                <span class="trama">Trama: {{ overview }}</span>
+            </div>
+        </div>
+        <div class="img" >
+                <img :src="store.imageUrl + poster_path" :alt="title">
+            </div>
+       
     </div>
+    
 </template>
 
 <script>
 import { store } from '../store.js';
     export default {
         name: 'CardComponent',
-        props: ['id', 'title', 'original_title', 'original_language', 'vote_average', 'overview'],
+        props: ['id', 'title', 'original_title', 'original_language', 'vote_average', 'overview', 'poster_path'],
         data() {
             return {
-                store
+                store,
+                hover: false,
             }
         }
     }
@@ -24,7 +33,7 @@ import { store } from '../store.js';
 
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
-div{
+.mr-card {
     width: 300px;
     height: 450px;
     display: flex;
@@ -35,27 +44,29 @@ div{
     font-weight: 500;
     .trama {
         overflow: auto;
+        height: 100%;
         &::-webkit-scrollbar-thumb {
-            border-radius: 8px;
-            background-color: #363636;
-        }
+                border-radius: 8px;
+                background-color: #363636;
+            }
         &::-webkit-scrollbar-track {
             border-radius: 8px;
             background-color: #e7e7e7;
             border: 1px solid #cacaca;
             box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
         }
-        &::-webkit-scrollbar {
+        &::-webkit-scrollbar {                 
             width: 12px;
         }
-        
+    }
+}
+.img {
+    width: 300px;
+    height: 450px;
+    img {
+        width: 100%;
+        height: 100%;
     }
 }
 
 </style>
-<!-- <ul>
-    <li>Titolo: {{ title }}</li>
-    <li>Titolo Originale: {{ original_title }}</li>
-    <li>Lingua: {{ original_language }}</li>
-    <li>Voto: {{ vote_average }}</li>
-</ul> -->
