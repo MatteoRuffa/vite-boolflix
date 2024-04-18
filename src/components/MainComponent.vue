@@ -28,7 +28,7 @@ import CardListTvShows from './CardLIstTvShows.vue';
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
 main {
-    background-color: $bg-dark;
+    
     color: $text-light;
     .container {
         padding: 70px;

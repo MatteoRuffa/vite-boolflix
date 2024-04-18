@@ -14,7 +14,6 @@
                         width="16"
                         height="12"
                         :alt="`${original_language}`">
-                    <!-- <span v-else>{{ original_language }}</span> -->
                 </div>
                 <div>Voto:
                     <div >
