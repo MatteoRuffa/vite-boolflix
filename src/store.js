@@ -2,9 +2,11 @@ import { reactive } from 'vue';
 
 export const store = reactive ({
     apiUrl: 'https://api.themoviedb.org/3/',
+    //popolarUrl: 'https://api.themoviedb.org/3/movie/popular',
     endPoint: {
         movie: 'search/movie',
-        tv: 'search/tv'
+        tv: 'search/tv',
+        topRatedMovies: 'discover/movie',
     },
     options: {
         params: {
@@ -18,6 +20,12 @@ export const store = reactive ({
     },
     // movies: [],
     // tvShows: [],
+    initialData: {
+        movies: [],
+        tvShows: [],
+    },
+    dataLoaded: false,
     searchQuery: '',
     imageUrl: 'http://image.tmdb.org/t/p/w500',
+
 })

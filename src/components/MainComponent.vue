@@ -1,7 +1,8 @@
 <template>
     <main>
         <div class="container">
-            <CardList :movies="store.data.movies" :tvShows="store.data.tvShows"/>
+            <CardsInitialList :movies="store.data.movies" :tvShows="store.data.tvShows"  v-if="!this.store.dataLoaded"/>
+            <CardList  :movies="store.data.movies" :tvShows="store.data.tvShows" v-else/>
         </div>
     </main>
 </template>
@@ -10,11 +11,13 @@
 import { store } from '../store.js';
 // import CardListMovies from './CardListMovies.vue';
 // import CardListTvShows from './CardLIstTvShows.vue';
+import CardsInitialList from './CardsInitialList.vue';
 import CardList from './CardList.vue';
     export default {
         name: 'MainComponent',
         components: {
             CardList,
+            CardsInitialList,
         },
         data() {
             return {

@@ -27,35 +27,45 @@ import MainComponent from './components/MainComponent.vue';
       }
     },
     methods: {
+      getTopRatedMovies() {
+        this.store.options.params.sort_by = 'vote_average.desc';
+        this.store.options.params.page = 1;
+        axios.get(this.store.apiUrl + this.store.endPoint.topRatedMovies, this.store.options).then((res) => {
+            this.store.initialData.movies = res.data.results;
+            console.log('Top rated movie data:', res.data);
+        }).catch((err) => {
+            console.error('Error fetching top rated movie data:', err);
+        })
+      },
       getDataShows() {
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
-          console.log(res.data.results);
+          console.log('getDataShows:', res.data.results);
           this.store.data.movies = res.data.results;
         }).catch((err) => {
           console.log(err);
-        }).finally(() => {
-          console.log('finally');
-        }),
+        })
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
-          console.log(res.data.results);
+          console.log('getDataShows:',res.data.results);
           this.store.data.tvShows = res.data.results;
         }).catch((err) => {
           console.log(err);
-        }).finally(() => {
-          console.log('finally');
         })
       },
       searchShows() {
         this.store.options.params.query = this.searchQuery;
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
           this.store.data.movies = res.data.results;
+          this.store.dataLoaded = true;
           console.log('Movie data:', res.data);
+          console.log(this.store.dataLoaded);
         }).catch((err) => {
           console.error('Error fetching movie data:', err);
         })
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
           this.store.data.tvShows = res.data.results;
+          this.store.dataLoaded = true; 
           console.log('tvShows data:', res.data);
+          console.log(this.store.dataLoaded);
         }).catch((err) => {
           console.error('Error fetching TV show data:', err);
         })
@@ -65,10 +75,12 @@ import MainComponent from './components/MainComponent.vue';
       },
     },
     created() {
+      this.getTopRatedMovies();
       //this.searchShows();
-      this.getDataShows()
+      this.getDataShows();
     }, 
     mounted() {
+      console.log(this.store.dataLoaded);
     //   const video = document.getElementById('netflix-intro');
     //   const audio = document.getElementById('netflix-sound');
     //   video.onplay = () => {
