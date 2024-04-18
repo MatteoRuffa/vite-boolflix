@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container" >
+    <div class="card-container" :ref="`${type}-container`">
         <div class="mr-card" :style="{ '--rotation': rotation }" @mouseover="hover = true" @mouseleave="hover = false">
             <div class="side front" v-if="!hover">
                 <img :src="store.imageUrl + poster_path" :alt="title">
@@ -29,7 +29,7 @@
 import { store } from '../store.js';
     export default {
         name: 'CardComponent',
-        props: ['id', 'title', 'original_title', 'original_language', 'vote_average', 'overview', 'poster_path'],
+        props: ['id', 'title', 'original_title', 'original_language', 'vote_average', 'overview', 'poster_path', 'type'],
         data() {
             return {
                 store,
