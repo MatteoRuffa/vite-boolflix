@@ -30,6 +30,9 @@ import CardListTvShows from './CardLIstTvShows.vue';
 main {
     background-color: $bg-dark;
     color: $text-light;
+    .container {
+        padding: 70px;
+    }
 }
 
 </style>

@@ -25,9 +25,9 @@ import CardComponent from './CardComponent.vue';
 </script>
 
 <style lang="scss" scoped>
-.row {
-    .col-12, .col-md-6, .col-lg-4, .col-xl-3 {
-        padding: 10px;
-    }
-}
+// .row {
+//     .col-12, .col-md-6, .col-lg-4, .col-xl-3 {
+//         padding: 10px;
+//     }
+// }
 </style>
