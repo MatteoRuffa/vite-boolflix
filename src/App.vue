@@ -1,11 +1,11 @@
 <template> 
-  <!-- <video id="netflix-intro" autoplay muted>
+  <video id="netflix-intro" autoplay muted>
     <source src="/public/videos/Netflix-New-Logo-Animation-2019-(1).mp4" type="video/mp4">
   </video>
 
   <audio id="netflix-sound" autoplay>
     <source src="/public/audio/Netflix-New-Logo-Animation-2019.mp3" type="audio/mpeg">
-  </audio>  -->
+  </audio>
   <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" @submit="onSubmit"/>
   <MainComponent />
 </template>
@@ -69,19 +69,19 @@ import MainComponent from './components/MainComponent.vue';
       this.getDataShows()
     }, 
     mounted() {
-      // const video = document.getElementById('netflix-intro');
-      // const audio = document.getElementById('netflix-sound');
-      // video.onplay = () => {
-      //   audio.play();
-      // };
-      // video.onended = () => {
-      //   video.style.display = 'none';
-      //   audio.pause();
-      //   audio.currentTime = 0;
-      // };
-      // video.oncanplaythrough = () => {
-      //   video.play();
-      // }
+      const video = document.getElementById('netflix-intro');
+      const audio = document.getElementById('netflix-sound');
+      video.onplay = () => {
+        audio.play();
+      };
+      video.onended = () => {
+        video.style.display = 'none';
+        audio.pause();
+        audio.currentTime = 0;
+      };
+      video.oncanplaythrough = () => {
+        video.play();
+      }
     }
   }
 </script>
