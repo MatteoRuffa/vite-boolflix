@@ -20,7 +20,7 @@ import CardComponent from './CardComponent.vue';
             return {
                 store
             }
-        }
+        },
     }
 </script>
 

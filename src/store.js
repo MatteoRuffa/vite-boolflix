@@ -12,8 +12,12 @@ export const store = reactive ({
             query: '',
         }
     },
-    movies: [],
-    tvShows: [],
+    data: {
+        movies: [],
+        tvShows: [],
+    },
+    // movies: [],
+    // tvShows: [],
     searchQuery: '',
     imageUrl: 'http://image.tmdb.org/t/p/w500',
 })

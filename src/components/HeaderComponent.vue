@@ -1,7 +1,19 @@
 <template>
     <header>
-        <div>
-            <div class="logo">IMMAGINE-LOGO</div>
+        <div class="mr-container">
+            <div class="logo-container">
+                <div class="logo">IMMAGINE-LOGO</div>
+                <div>
+                    <ul class="nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Serie TV</a></li>
+                        <li><a href="#">Film</a></li>
+                        <li><a href="#">Nuovi e popolari</a></li>
+                        <li><a href="#">La mia lista</a></li>
+                        <li><a href="#">Sfoglia per lingua</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="search-bar">
                 <form class="d-flex" role="search" @submit.prevent="$emit('submit')">
                     <input class="form-control me-2" type="search" placeholder="Search" :value="searchQuery" @input="$emit('searchQuery', 
@@ -25,13 +37,29 @@
 header {
     background-color: $bg-black;
     color: $text-red;
-    div {
+    .mr-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 10px;
-        .logo {
-            text-transform: uppercase;
-            font-size: 2rem;
+        .logo-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo {
+                text-transform: uppercase;
+                font-size: 2rem;
+                padding: 0 20px;
+            }
+            ul {
+                li{
+                    padding: 0 20px;
+                    a {
+                    text-decoration: none;
+                    color: $text-gray;
+                    }
+                }
+            }
         }
         .search-bar {
             .form-control {

@@ -5,8 +5,8 @@
                 <img :src="store.imageUrl + poster_path" :alt="title">
             </div>
             <div class="side back" v-else >
-                <div>Titolo: {{ title || name }}</div>
-                <div>Titolo Originale: {{ original_title || original_name}}</div>
+                <div>Titolo: {{ title }}</div>
+                <div>Titolo Originale: {{ original_title }}</div>
                 <div>Lingua: 
                     <img 
                         :src="`https://flagcdn.com/16x12/${original_language}.png`"

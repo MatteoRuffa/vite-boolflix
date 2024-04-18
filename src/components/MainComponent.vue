@@ -1,21 +1,21 @@
 <template>
     <main>
         <div class="container">
-            <CardListMovies />
-            <CardListTvShows />
+            <CardList :movies="store.data.movies" :tvShows="store.data.tvShows"/>
+            
         </div>
     </main>
 </template>
 
 <script>
 import { store } from '../store.js';
-import CardListMovies from './CardListMovies.vue';
-import CardListTvShows from './CardLIstTvShows.vue';
+// import CardListMovies from './CardListMovies.vue';
+// import CardListTvShows from './CardLIstTvShows.vue';
+import CardList from './CardList.vue';
     export default {
         name: 'MainComponent',
         components: {
-            CardListMovies,
-            CardListTvShows,
+            CardList,
         },
         data() {
             return {
