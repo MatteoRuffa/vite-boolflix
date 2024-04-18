@@ -1,5 +1,5 @@
 <template>
-    <div  >
+    <div >
         <div class="row" v-for="(shows, type) in allShows" :key="type">
             <h2>{{ type }}</h2>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id">
