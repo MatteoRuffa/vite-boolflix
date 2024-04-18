@@ -1,6 +1,6 @@
 <template>
     <div v-for="(shows, type) in allShowsInitial" :key="type">
-        <h2>{{ type }} </h2>
+        <h2>Most popular {{ type }} </h2>
         <div class="row"  :id="`${type}-container`">
             <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id">
                 <CardComponent :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
@@ -28,10 +28,10 @@ import CardComponent from './CardComponent.vue';
         },
         methods: {
             scrollContentForward(type) {
-                console.log('scrollContent called with type:', type);
+                // console.log('scrollContent called with type:', type);
                 const element = document.querySelector(`#${type}-container`); //SCOPERTO NUOVO MODO PER I QUERYSELECTOR!!!
                 if (element) {
-                    console.log('Element found:', element);
+                    // console.log('Element found:', element);
                     element.scrollBy({
                         left: 1215, 
                         behavior: "smooth",
@@ -58,13 +58,13 @@ import CardComponent from './CardComponent.vue';
             allShowsInitial() {
                 return {
                     'Film': this.store.initialData.movies,
-                    'TV Shows': this.store.initialData.tvShows
+                    'TvShows': this.store.initialData.tvShows
                 };
             },
         },
         created() {
-            //console.log('Movies:', this.movies);
-            //console.log('TV Shows:', this.tvShows);
+            console.log('Movies:', this.store.initialData.movies);
+            console.log('TvShows:', this.store.initialData.tvShows);
         },
     }
 </script>

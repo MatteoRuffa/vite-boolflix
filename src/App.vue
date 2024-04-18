@@ -28,29 +28,33 @@ import MainComponent from './components/MainComponent.vue';
     },
     methods: {
       getTopRatedMovies() {
-        this.store.options.params.sort_by = 'vote_average.desc';
-        this.store.options.params.page = 1;
-        axios.get(this.store.apiUrl + this.store.endPoint.topRatedMovies, this.store.options).then((res) => {
+        axios.get(this.store.apiUrl + this.store.endPoint.popularMovies, this.store.options).then((res) => {
             this.store.initialData.movies = res.data.results;
             console.log('Top rated movie data:', res.data);
         }).catch((err) => {
             console.error('Error fetching top rated movie data:', err);
         })
-      },
-      getDataShows() {
-        axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
-          console.log('getDataShows:', res.data.results);
-          this.store.data.movies = res.data.results;
+        axios.get(this.store.apiUrl + this.store.endPoint.popularTvShows, this.store.options).then((res) => {
+            this.store.initialData.tvShows = res.data.results;
+            console.log('Top rated tvShows data:', res.data);
         }).catch((err) => {
-          console.log(err);
-        })
-        axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
-          console.log('getDataShows:',res.data.results);
-          this.store.data.tvShows = res.data.results;
-        }).catch((err) => {
-          console.log(err);
+            console.error('Error fetching top rated movie data:', err);
         })
       },
+      // getDataShows() {
+      //   axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
+      //     console.log('getDataShows:', res.data.results);
+      //     this.store.data.movies = res.data.results;
+      //   }).catch((err) => {
+      //     console.log(err);
+      //   })
+      //   axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
+      //     console.log('getDataShows:',res.data.results);
+      //     this.store.data.tvShows = res.data.results;
+      //   }).catch((err) => {
+      //     console.log(err);
+      //   })
+      // },
       searchShows() {
         this.store.options.params.query = this.searchQuery;
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
@@ -77,7 +81,7 @@ import MainComponent from './components/MainComponent.vue';
     created() {
       this.getTopRatedMovies();
       //this.searchShows();
-      this.getDataShows();
+      // this.getDataShows();
     }, 
     mounted() {
       console.log(this.store.dataLoaded);

@@ -1,8 +1,8 @@
 <template>
     <div v-for="(shows, type) in allShows" :key="type">
         <h2>{{ type }} </h2>
-        <div class="row"  :id="`${type}-container`">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id">
+        <div class="row" >
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id" >
                 <CardComponent :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
                 :vote_average="card.vote_average" :overview="card.overview"  :poster_path="card.poster_path"/>
             </div>
@@ -23,26 +23,21 @@ import CardComponent from './CardComponent.vue';
         },
         data() {
             return {
-                store
+                store,
+                moviesLeft: '', 
             }
         },
         methods: {
             scrollContentForward(type) {
-                console.log('scrollContent called with type:', type);
-                const element = document.querySelector(`#${type}-container`); //SCOPERTO NUOVO MODO PER I QUERYSELECTOR!!!
-                if (element) {
-                    console.log('Element found:', element);
-                    element.scrollBy({
-                        left: 1215, 
-                        behavior: "smooth",
-                    });
-                } else {
-                    console.error(`Element with ID ${type}-container not found`);
-                }
+                // console.log('scrollContent called with type:', type);
+            
+                this.moviesLeft = 'scrolled';
+                
             },
             scrollContentbehind(type) {
                 console.log('scrollContent called with type:', type);
                 const element = document.querySelector(`#${type}-container`); //SCOPERTO NUOVO MODO PER I QUERYSELECTOR!!!
+                
                 if (element) {
                     console.log('Element found:', element);
                     element.scrollBy({
@@ -58,7 +53,7 @@ import CardComponent from './CardComponent.vue';
             allShows() {
                 return {
                     'Film': this.store.data.movies,
-                    'TV Shows': this.store.data.tvShows
+                    'TvShows': this.store.data.tvShows
                 };
             },
         },
@@ -77,6 +72,8 @@ div {
     position: relative;
     
     .row {
+        left: 0;
+        // behavior: "smooth";
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
@@ -111,6 +108,9 @@ div {
         &:hover {
             color: $text-light;
         }
+    }
+    .scrolled {
+        left: 1215px!important;
     }
 }
 </style>

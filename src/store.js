@@ -6,7 +6,8 @@ export const store = reactive ({
     endPoint: {
         movie: 'search/movie',
         tv: 'search/tv',
-        topRatedMovies: 'discover/movie',
+        popularMovies: 'movie/popular',
+        popularTvShows: 'tv/popular'
     },
     options: {
         params: {
