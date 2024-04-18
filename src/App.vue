@@ -55,7 +55,7 @@ import MainComponent from './components/MainComponent.vue';
         })
         axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
           this.store.data.tvShows = res.data.results;
-          console.log(res.data.results);
+          console.log('tvShows data:', res.data);
         }).catch((err) => {
           console.error('Error fetching TV show data:', err);
         })

@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="{ 'scrolled': scrolled }">
         <div class="mr-container">
             <div class="logo-container">
                 <div class="logo">IMMAGINE-LOGO</div>
@@ -29,14 +29,38 @@
     export default {
         name: 'HeaderComponent',
         props: ['searchQuery'],
+        data() {
+            return {
+                scrolled: false
+            }
+        },
+        methods: {
+            handleScroll() {
+                this.scrolled = window.scrollY > 0;
+            }
+        },
+        created() {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
     }
 </script>
 
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
 header {
-    background-color: $bg-black;
     color: $text-red;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 600;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+    &.scrolled {
+        background-color: $bg-black;
+    }
     .mr-container {
         display: flex;
         justify-content: space-between;
