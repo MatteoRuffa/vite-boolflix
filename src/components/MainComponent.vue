@@ -2,7 +2,6 @@
     <main>
         <div class="container">
             <CardList :movies="store.data.movies" :tvShows="store.data.tvShows"/>
-            
         </div>
     </main>
 </template>
@@ -28,7 +27,6 @@ import CardList from './CardList.vue';
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
 main {
-    
     color: $text-light;
     .container {
         padding: 70px;
