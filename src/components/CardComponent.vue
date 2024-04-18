@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container">
+    <div class="card-container" >
         <div class="mr-card" :style="{ '--rotation': rotation }" @mouseover="hover = true" @mouseleave="hover = false">
             <div class="side front" v-if="!hover">
                 <img :src="store.imageUrl + poster_path" :alt="title">
