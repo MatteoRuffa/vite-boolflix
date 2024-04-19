@@ -1,8 +1,8 @@
 <template>
     <div v-for="(shows, type) in allShowsInitial" :key="type">
         <h2>Most popular {{ type }} </h2>
-        <div class="row"  :id="`${type}-container`">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id">
+        <div class="mr-row"  :ref="`${type}-container`">
+            <div class="card-container"  v-for="card in shows" :key="card.id">
                 <CardComponent :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
                 :vote_average="card.vote_average" :overview="card.overview"  :poster_path="card.poster_path"/>
             </div>
@@ -28,29 +28,25 @@ import CardComponent from './CardComponent.vue';
         },
         methods: {
             scrollContentForward(type) {
-                // console.log('scrollContent called with type:', type);
-                const element = document.querySelector(`#${type}-container`); //SCOPERTO NUOVO MODO PER I QUERYSELECTOR!!!
+                const element = this.$refs[`${type}-container`][0]; //NON FUNZIONAVA PERCHE $refs E UN ARRAY E NONUN OGGETTO!!!![0]FUNGE!!!È VIVOOOO!!!
                 if (element) {
-                    // console.log('Element found:', element);
                     element.scrollBy({
                         left: 1215, 
                         behavior: "smooth",
                     });
                 } else {
-                    console.error(`Element with ID ${type}-container not found`);
+                    console.error(`Element with ref ${type}-container not found`);
                 }
             },
             scrollContentbehind(type) {
-                console.log('scrollContent called with type:', type);
-                const element = document.querySelector(`#${type}-container`); //SCOPERTO NUOVO MODO PER I QUERYSELECTOR!!!
+                const element = this.$refs[`${type}-container`][0];
                 if (element) {
-                    console.log('Element found:', element);
                     element.scrollBy({
                         left: -1215, 
                         behavior: "smooth",
                     });
                 } else {
-                    console.error(`Element with ID ${type}-container not found`);
+                    console.error(`Element with ref ${type}-container not found`);
                 }
             }
         },
@@ -74,7 +70,7 @@ import CardComponent from './CardComponent.vue';
 div {
     position: relative;
     
-    .row {
+    .mr-row {
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
@@ -82,9 +78,6 @@ div {
         h2 {
             position: absolute;
         }
-    // .col-12, .col-md-6, .col-lg-4, .col-xl-3 {
-        
-    // }
     }
     .fa-chevron-right {
         font-size: 4rem;

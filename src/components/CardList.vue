@@ -1,7 +1,7 @@
 <template>
     <div v-for="(shows, type) in allShows" :key="type">
         <h2>{{ type }} </h2>
-        <div class="row" >
+        <div class="mr-row" >
             <div class="col-12 col-md-6 col-lg-4 col-xl-3"  v-for="card in shows" :key="card.id" >
                 <CardComponent :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
                 :vote_average="card.vote_average" :overview="card.overview"  :poster_path="card.poster_path"/>
@@ -71,9 +71,9 @@ import CardComponent from './CardComponent.vue';
 div {
     position: relative;
     
-    .row {
+    .mr-row {
         left: 0;
-        // behavior: "smooth";
+        behavior: "smooth";
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
@@ -81,9 +81,6 @@ div {
         h2 {
             position: absolute;
         }
-    // .col-12, .col-md-6, .col-lg-4, .col-xl-3 {
-        
-    // }
     }
     .fa-chevron-right {
         font-size: 4rem;

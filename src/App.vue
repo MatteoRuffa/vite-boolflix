@@ -1,11 +1,12 @@
+APP.VUE
 <template> 
-  <!-- <video id="netflix-intro" autoplay muted>
+  <video ref="netflixIntro" autoplay muted>
     <source src="/public/videos/Netflix-New-Logo-Animation-2019-(1).mp4" type="video/mp4">
   </video>
 
-  <audio id="netflix-sound" autoplay>
+  <audio ref="netflixSound" autoplay>
     <source src="/public/audio/Netflix-New-Logo-Animation-2019.mp3" type="audio/mpeg">
-  </audio> -->
+  </audio>
   <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" @submit="onSubmit"/>
   <MainComponent />
 </template>
@@ -30,13 +31,7 @@ import MainComponent from './components/MainComponent.vue';
       getTopRatedMovies() {
         axios.get(this.store.apiUrl + this.store.endPoint.popularMovies, this.store.options).then((res) => {
             this.store.initialData.movies = res.data.results;
-           // console.log('Top rated movie data:', res.data);
-
-
-
-
-           
-            
+            console.log('Top rated movie data:', res.data);
         }).catch((err) => {
             console.error('Error fetching top rated movie data:', err);
         })
@@ -47,20 +42,7 @@ import MainComponent from './components/MainComponent.vue';
             console.error('Error fetching top rated movie data:', err);
         })
       },
-      // getDataShows() {
-      //   axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
-      //     console.log('getDataShows:', res.data.results);
-      //     this.store.data.movies = res.data.results;
-      //   }).catch((err) => {
-      //     console.log(err);
-      //   })
-      //   axios.get(this.store.apiUrl + this.store.endPoint.tv, this.store.options).then((res) => {
-      //     console.log('getDataShows:',res.data.results);
-      //     this.store.data.tvShows = res.data.results;
-      //   }).catch((err) => {
-      //     console.log(err);
-      //   })
-      // },
+      
       searchShows() {
         this.store.options.params.query = this.searchQuery;
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options).then((res) => {
@@ -91,25 +73,23 @@ import MainComponent from './components/MainComponent.vue';
     }, 
     mounted() {
       console.log(this.store.dataLoaded);
-    //   const video = document.getElementById('netflix-intro');
-    //   const audio = document.getElementById('netflix-sound');
-    //   video.onplay = () => {
-    //     audio.play();
-    //   };
-    //   video.onended = () => {
-    //     video.style.display = 'none';
-    //     audio.pause();
-    //     audio.currentTime = 0;
-    //   };
-    //   video.oncanplaythrough = () => {
-    //     video.play();
-    //   }
-  }
+      this.$refs.netflixIntro.onplay = () => {
+      this.$refs.netflixSound.play();
+      };
+      this.$refs.netflixIntro.onended = () => {
+        this.$refs.netflixIntro.style.display = 'none';
+        this.$refs.netflixSound.pause();
+        this.$refs.netflixSound.currentTime = 0;
+      };
+      this.$refs.netflixIntro.oncanplaythrough = () => {
+        this.$refs.netflixIntro.play();
+      }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-#netflix-intro {
+video {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -122,6 +102,4 @@ import MainComponent from './components/MainComponent.vue';
 }
 
 </style>
-
-
 
