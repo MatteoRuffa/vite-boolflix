@@ -29,7 +29,7 @@
 import { store } from '../store.js';
     export default {
         name: 'CardComponent',
-        props: ['id', 'title', 'original_title', 'original_language', 'vote_average', 'overview', 'poster_path', 'type'],
+        props: ['id', 'title', 'name', 'original_title', ' original_name', 'original_language', 'vote_average', 'overview', 'poster_path', 'type'],
         data() {
             return {
                 store,

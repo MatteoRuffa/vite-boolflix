@@ -3,8 +3,8 @@
         <h2>{{ type }} </h2>
         <div class="mr-row"  :ref="`${type}-container`">
             <div class="card-container"  v-for="card in shows" :key="card.id">
-                <CardComponent :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
-                :vote_average="card.vote_average" :overview="card.overview"  :poster_path="card.poster_path"/>
+                <CardCarousel :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
+                :vote_average="card.vote_average" :overview="card.overview"  :backdrop_path="card.backdrop_path"/>
             </div>
         </div>
         <i class="fa-solid fa-angle-left" @click="scrollContentbehind(type)"></i>
@@ -14,12 +14,12 @@
 
 <script>
 import { store } from '../store.js';
-import CardComponent from './CardComponent.vue';
+import CardCarousel from './CardCarousel.vue';
     export default {
         name: 'CardList',
         props: ['movies', 'tvShows'],
         components: {
-            CardComponent
+            CardCarousel
         },
         data() {
             return {

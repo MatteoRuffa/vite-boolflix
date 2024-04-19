@@ -8,7 +8,11 @@
             <div class="info-video">
                 <div class="B-logo"><img src="/images/B-logo-boolflix.png" alt=""><span>film</span></div>
                 <h2>Dune</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores hic, asperiores ullam explicabo quo possimus nam aspernatur repellat ipsam. Aspernatur?</p>
+                <p>Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his 
+                    understanding, must travel to the most dangerous planet in the universe to ensure the future 
+                    of his family and his people. As malevolent forces explode into conflict over the planet's 
+                    exclusive supply of the most precious resource in existence-a commodity capable of unlocking
+                     humanity's greatest potential-only those who can conquer their fear will survive.</p>
                 <div class="buttons">
                     <button type="button" class="btn btn-light left"><i class="fa-solid fa-play"></i> <span>Riproduci</span></button>
                     <button type="button" class="btn btn-secondary right"><i class="fa-solid fa-circle-info"></i><span>Altre info</span></button>
@@ -16,7 +20,8 @@
             </div>
         </div>
         <div class="container">
-            <CardsInitialList  class="cards-initial-list" :movies="store.data.movies" :tvShows="store.data.tvShows" v-if="!this.store.dataLoaded" />
+            <CardsInitialList  class="cards-initial-list" :movies="store.initialData.movies" :tvShows="store.initialData.tvShows" 
+            v-if="!this.store.dataLoaded" />
             <CardList  :movies="store.data.movies" :tvShows="store.data.tvShows" v-else/>
         </div>
     </main>
@@ -68,7 +73,7 @@ main {
         }
         .info-video{
             position: absolute;
-            top: 300px;
+            top: 260px;
             padding: 30px;
             display: flex;
             flex-direction: column;
@@ -83,7 +88,8 @@ main {
                 }   
             }
             p {
-                width: 400px;
+                width: 700px;
+                font-size: 1.3rem;
             }
             .buttons{
                 display: flex;
