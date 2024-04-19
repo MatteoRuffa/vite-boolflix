@@ -14,9 +14,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="search-bar">
+            <div class="search-bar px-3 py-2">
                 <form class="d-flex" role="search" @submit.prevent="$emit('submit')">
-                    <input class="form-control me-2" type="search" placeholder="Search" :value="searchQuery" @input="$emit('searchQuery', 
+                    <input class="form-control" type="search" placeholder="Search" :value="searchQuery" @input="$emit('searchQuery', 
                     $event.target.value)" @keyup.enter="$emit('submit')">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>

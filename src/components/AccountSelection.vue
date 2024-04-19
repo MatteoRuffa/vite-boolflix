@@ -1,12 +1,13 @@
 <template>
     <div class="account-selection">
+        <div class="background-fade"></div>
         <h1>Who's watching?</h1>
         <div class="accounts">
             <div class="account" v-for="account in accounts" :key="account.id" @click="selectAccount(account)" >
                 <div class="account-image">
                     <img :src="account.image" alt="">
                 </div>
-                <div>
+                <div class="account-name">
                     {{ account.name }}
                 </div>
             </div>
@@ -48,8 +49,15 @@
     justify-content: center;
     align-items: center;
     background-color: $bg-accounts;
+    .background-fade {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 10vh;  
+            background: linear-gradient(to bottom,  $bg-black 0%, $bg-accounts 100%);
+        }
     h1 {
-        font-size: 5rem;
+        font-size: 4.5rem;
         color: $text-light; 
     }
     .accounts{
@@ -65,10 +73,17 @@
             .account-image {
                 width: 200px;
                 height: 200px;
+                
                 img {
                     width: 100%;
                     height: 100%;
-                }}
+                    border-radius: 5px;
+                }
+            }
+            .account-name {
+                font-size: 1.5rem;
+                padding: 10px;
+            }
         }
     } 
 }
