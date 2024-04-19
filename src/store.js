@@ -28,4 +28,5 @@ export const store = reactive ({
     dataLoaded: false,
     searchQuery: '',
     imageUrl: 'http://image.tmdb.org/t/p/w500',
+    
 })
