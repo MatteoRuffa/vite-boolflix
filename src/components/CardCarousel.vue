@@ -2,8 +2,9 @@
     <div class="card-container">
         <div class="mr-card">
             <div class="img-container">
-                <div class="logo"><img src="/images/B-logo-boolflix.png" alt=""></div>
-                <img :src="store.imageUrl + backdrop_path" :alt="title">
+                <div class="logo"><img src="/images/B-logo-boolflix.png" alt="" v-if="backdrop_path"></div>
+                <img :src="store.imageUrl + backdrop_path" :alt="title" v-if="backdrop_path">
+                <img src="/images/logo-boolflix.png" :alt="title" v-else>
             </div>
         </div>
     </div>
@@ -26,14 +27,11 @@ import { store } from '../store.js';
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
 .card-container {
+    position: relative;
     .mr-card {
-        
-        // width: 300px;
-        // height: 190px;
-        padding: 10px;
+        padding: 20px;
         .img-container {
-            border-radius: 10px;
-            overflow: hidden;
+            border-radius: 6px;
             width: 300px;
             .logo {
                 position: absolute;
@@ -50,6 +48,8 @@ import { store } from '../store.js';
                 object-fit: contain;
                 width: 100%;
                 height: 100%;
+                border-radius: 5px;
+                
             }
         }
     }

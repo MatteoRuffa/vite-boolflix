@@ -2,6 +2,7 @@
     <div class="card-container" >
         <div class="mr-card" :style="{ '--rotation': rotation }" @mouseover="hover = true" @mouseleave="hover = false">
             <div class="side front" v-if="!hover">
+                <div class="logo"><img src="/images/B-logo-boolflix.png" alt="" v-if="backdrop_path"></div>
                 <img :src="store.imageUrl + poster_path" :alt="title">
             </div>
             <div class="side back" v-else >
@@ -69,6 +70,7 @@ import { store } from '../store.js';
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+           
         }
         .front {
             position: absolute;

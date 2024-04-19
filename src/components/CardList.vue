@@ -1,6 +1,6 @@
 <template>
     <div v-for="(shows, type) in allShows" :key="type">
-        <h2>{{ type }} </h2>
+        <h2 >{{ type }} </h2>
         <div class="mr-row"  :ref="`${type}-container`">
             <div class="card-container"  v-for="card in shows" :key="card.id">
                 <CardCarousel :id="card.id" :title="card.title || card.name" :original_title="card.original_title" :original_language="card.original_language" 
@@ -72,15 +72,30 @@ import CardCarousel from './CardCarousel.vue';
 @use '../assets/styles/partials/variables' as *;
 div {
     position: relative;
+    max-height: 300px;
+    h2 {
+        padding: 20px;
+    }
     
     .mr-row {
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
         position: relative;
-        h2 {
-            position: absolute;
+       
+        .card-container {
+            transition: transform 0.3s;
+            position: relative;
+            .CardCarousel{
+                overflow: visible;
+                position: absolute;
+            }
+            &:hover {
+            transform: scale(1.1);
+            z-index: 10000;
+            }
         }
+        
     }
     .fa-chevron-right {
         font-size: 4rem;

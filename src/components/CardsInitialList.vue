@@ -69,6 +69,9 @@ import CardComponent from './CardComponent.vue';
 @use '../assets/styles/partials/variables' as *;
 div {
     position: relative;
+    h2 {
+        padding: 20px;
+    }
     
     .mr-row {
         display: flex;
