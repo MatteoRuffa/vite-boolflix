@@ -2,7 +2,7 @@
     <header :class="{ 'scrolled': scrolled }">
         <div class="mr-container">
             <div class="logo-container">
-                <div class="logo">IMMAGINE-LOGO</div>
+                <span class="logo"><img src="/images/logo-boolflix.png" alt=""></span>
                 <div>
                     <ul class="nav">
                         <li><a href="#">Home</a></li>
@@ -68,12 +68,14 @@ header {
         padding: 10px;
         .logo-container{
             display: flex;
-            justify-content: space-between;
             align-items: center;
             .logo {
-                text-transform: uppercase;
-                font-size: 2rem;
-                padding: 0 20px;
+                padding-left: 40px;
+                width: 140px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
             }
             ul {
                 li{
