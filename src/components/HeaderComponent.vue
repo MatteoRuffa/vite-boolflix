@@ -57,9 +57,10 @@ header {
     width: 100%;
     z-index: 600;
     transition: background-color 0.3s ease;
-    background-color: transparent;
+    background: linear-gradient(to top, transparent 0%, $bg-black 100%);
     &.scrolled {
         background-color: $bg-black;
+        background: $bg-black
     }
     .mr-container {
         display: flex;
