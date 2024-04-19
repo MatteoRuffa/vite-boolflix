@@ -1,14 +1,18 @@
 APP.VUE
 <template> 
-  <video ref="netflixIntro" autoplay muted>
-    <source src="/public/videos/Netflix-New-Logo-Animation-2019-(1).mp4" type="video/mp4">
-  </video>
+  
+  
 
-  <audio ref="netflixSound" autoplay>
-    <source src="/public/audio/Netflix-New-Logo-Animation-2019.mp3" type="audio/mpeg">
-  </audio>
-  <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" @submit="onSubmit"/>
-  <MainComponent />
+  <AccountSelection v-if="!selectedAccount" @accountSelected="onAccountSelected" />
+  <div v-else>
+    <video  ref="netflixIntro" >
+      <source src="/public/videos/Netflix-New-Logo-Animation-2019-(1).mp4" type="video/mp4" @error="onVideoError">
+    </video> 
+    
+    <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" 
+    @submit="onSubmit"/>
+    <MainComponent  />
+  </div>
 </template>
 
 <script>
@@ -16,18 +20,37 @@ import axios from 'axios';
 import { store } from './store.js';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
+import AccountSelection from './components/AccountSelection.vue';
   export default {
     name: 'App',
     components: {
       HeaderComponent,
       MainComponent,
+      AccountSelection,
     },
     data() {
       return {
-        store
+        store,
+        selectedAccount: null,
       }
     },
     methods: {
+      onAccountSelected(account) {
+        console.log('Received accountSelected event with account:', account);
+        this.selectedAccount = account;
+        this.$nextTick(() => {
+          this.playVideo();
+        });
+      },
+      playVideo() {
+        this.$refs.netflixIntro.play();
+        this.$refs.netflixIntro.onended = () => {
+          this.$refs.netflixIntro.style.display = 'none';
+        };
+      },
+      onVideoError() {
+        console.error('Error loading video');
+      },
       getTopRatedMovies() {
         axios.get(this.store.apiUrl + this.store.endPoint.popularMovies, this.store.options).then((res) => {
             this.store.initialData.movies = res.data.results;
@@ -73,17 +96,6 @@ import MainComponent from './components/MainComponent.vue';
     }, 
     mounted() {
       console.log(this.store.dataLoaded);
-      this.$refs.netflixIntro.onplay = () => {
-      this.$refs.netflixSound.play();
-      };
-      this.$refs.netflixIntro.onended = () => {
-        this.$refs.netflixIntro.style.display = 'none';
-        this.$refs.netflixSound.pause();
-        this.$refs.netflixSound.currentTime = 0;
-      };
-      this.$refs.netflixIntro.oncanplaythrough = () => {
-        this.$refs.netflixIntro.play();
-      }
     }
 }
 </script>
