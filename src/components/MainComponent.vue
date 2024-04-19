@@ -1,6 +1,7 @@
 <template>
-    <main>
-        <div class="container">
+    <main>  
+
+        <div class="container p-2 ">
             <CardsInitialList :movies="store.data.movies" :tvShows="store.data.tvShows"  v-if="!this.store.dataLoaded"/>
             <CardList  :movies="store.data.movies" :tvShows="store.data.tvShows" v-else/>
         </div>

@@ -30,7 +30,13 @@ import MainComponent from './components/MainComponent.vue';
       getTopRatedMovies() {
         axios.get(this.store.apiUrl + this.store.endPoint.popularMovies, this.store.options).then((res) => {
             this.store.initialData.movies = res.data.results;
-            console.log('Top rated movie data:', res.data);
+           // console.log('Top rated movie data:', res.data);
+
+
+
+
+           
+            
         }).catch((err) => {
             console.error('Error fetching top rated movie data:', err);
         })
