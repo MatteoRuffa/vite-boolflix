@@ -1,5 +1,5 @@
 <template>
-    <div v-for="(shows, type) in allShowsInitial" :key="type">
+    <!-- <div v-for="(shows, type) in allShowsInitial" :key="type">
         <h2>Most popular {{ type }} </h2>
         <div class="mr-row"  :ref="`${type}-container`">
             <div class="card-container"  v-for="card in shows" :key="card.id">
@@ -9,7 +9,7 @@
         </div>
         <i class="fa-solid fa-angle-left" @click="scrollContentbehind(type)"></i>
         <i class="fa-solid fa-chevron-right" @click="scrollContentForward(type)"></i>
-    </div>
+    </div> -->
 </template>
 
 <script>

@@ -72,7 +72,7 @@ import CardCarousel from './CardCarousel.vue';
 @use '../assets/styles/partials/variables' as *;
 div {
     position: relative;
-    max-height: 300px;
+    // max-height: 300px;
     h2 {
         padding: 20px;
     }
