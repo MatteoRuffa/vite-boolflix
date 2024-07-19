@@ -24,9 +24,9 @@ import AccountSelection from './components/AccountSelection.vue';
   export default {
     name: 'App',
     components: {
-      HeaderComponent,
-      MainComponent,
-      AccountSelection,
+    //   HeaderComponent,
+    //   MainComponent,
+    //   AccountSelection,
     },
     data() {
       return {
