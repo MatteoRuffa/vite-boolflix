@@ -4,7 +4,7 @@ APP.VUE
   
 
   <AccountSelection v-if="!selectedAccount" @accountSelected="onAccountSelected" />
-  <div v-else>
+  <!-- <div v-else>
     <video  ref="netflixIntro" >
       <source src="/public/videos/Netflix-New-Logo-Animation-2019-(1).mp4" type="video/mp4" @error="onVideoError">
     </video> 
@@ -12,7 +12,7 @@ APP.VUE
     <HeaderComponent :searchQuery="this.store.searchQuery" @searchQuery="searchQuery = $event" 
     @submit="onSubmit"/>
     <MainComponent  />
-  </div>
+  </div> -->
 </template>
 
 <script>
